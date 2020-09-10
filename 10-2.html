@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+    .square{
+        margin-top: 10px;
+        width: 50%;
+        height: 20px;
+        background-color: beige;
+        border: 2px solid black;
+    }
+
+    #click{
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Chuyển đổi hệ thập phân sang nhị phân</h1>
+    <input type="text" placeholder="số cần chuyển đổi" id="convert_num">        
+    <div class="square" id="loigiai">Lời giải:</div>
+    <div id="answering"></div>
+    <a href="index.html">Trang chủ</div>
+
+    <button id="click">Click</button>
+    <script>
+        $("#click").click(function(){
+            $("#answering").empty()
+            var $convert_num = parseInt($("#convert_num").val());
+            var $as = $("#as");
+            console.log($convert_num);
+            var answer = "";
+            var check = 0;
+            // chia số cho 2 (lấy nguyên) đến khi số = 0;
+            while ($convert_num > 0){
+                var $div = $("<div>").addClass("square");
+                if ($convert_num % 2 == 1){
+                    answer = "1" + answer ;
+                    $div.text($convert_num + " chia cho 2 được " + Math.floor($convert_num/2) + " dư 1").appendTo("#answering");
+                    
+                } 
+                else {
+                    answer = "0" + answer ;
+                    $div.text($convert_num + " chia cho 2 được " + Math.floor($convert_num/2) + " không dư").appendTo("#answering");
+                }
+                $convert_num = Math.floor($convert_num/2);
+                
+
+            }      
+            $div = $("<div>").addClass("square").text("Lấy số dư theo chiều từ dưới lên, ta có: "+answer).appendTo("#answering");
+        });
+    </script>
+</body>
+</html>
